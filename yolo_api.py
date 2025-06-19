@@ -6,7 +6,19 @@ import base64
 import io
 
 app = Flask(__name__)
-model = YOLO("D:/projects mobile apps/My Apps/leg_deformities/best2.pt")
+MODEL_PATH = "best2.pt"
+MODEL_URL = "https://drive.google.com/file/d/1BfMK9s5LuuPTUmPkt2TT8VYIQcVf3-Rw/view?usp=sharing"
+
+def download_model():
+    if not os.path.exists(MODEL_PATH):
+        print("📦 Downloading model...")
+        r = requests.get(MODEL_URL)
+        with open(MODEL_PATH, 'wb') as f:
+            f.write(r.content)
+        print("✅ Model downloaded")
+
+download_model()
+model = YOLO(MODEL_PATH)
 
 @app.route('/predict', methods=['POST'])
 def predict():
