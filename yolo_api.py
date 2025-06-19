@@ -7,7 +7,7 @@ import io
 
 app = Flask(__name__)
 MODEL_PATH = "best2.pt"
-MODEL_URL = "https://drive.google.com/file/d/1BfMK9s5LuuPTUmPkt2TT8VYIQcVf3-Rw/view?usp=sharing"
+MODEL_URL = "https://drive.google.com/uc?export=download&id=1BfMK9s5LuuPTUmPkt2TT8VYIQcVf3-Rw"
 
 def download_model():
     if not os.path.exists(MODEL_PATH):
